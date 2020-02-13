@@ -121,6 +121,7 @@ function changeTheme () {
         document.querySelector('.title-input').classList.add('changeColor');
         document.querySelector('.text-area').classList.add('changeColor');
         document.querySelector('.send').src = './icons/dark-save.svg';
+        document.querySelector('.cancel').src = './icons/dark-cancel.svg';
 
         document.querySelectorAll('.message').forEach(el => el.style.background = '#595959');
         document.querySelectorAll('.message-title').forEach(el => el.style.color = '#FFFFFF');
@@ -143,6 +144,7 @@ function changeTheme () {
         document.querySelector('.title-input').classList.remove('changeColor');
         document.querySelector('.text-area').classList.remove('changeColor');
         document.querySelector('.send').src = './icons/save.svg';
+        document.querySelector('.cancel').src = './icons/cancel.svg';
 
         document.querySelectorAll('.message').forEach(el => el.style.background = '#FFFFFF');
         document.querySelectorAll('.message-title').forEach(el => el.style.color = '#3A4248');
