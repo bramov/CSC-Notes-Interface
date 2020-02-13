@@ -3,7 +3,7 @@ let darktheme = false;
 let colorPicker = document.querySelector('.color-pick');
 let colorChooser = document.querySelector('.other-colors');
 let sendButton = document.querySelector('.send');
-let clearButton = document.querySelector('.delete');
+let clearButton = document.querySelector('.cancel');
 let themeButton = document.querySelector('.theme');
 
 
