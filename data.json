@@ -1,0 +1,1 @@
+{"status":"success","message":"Notes retrieved successfully","data":[{"_id":"0001","title":"Первое сообщение","text":"Оно не пропадет никуда и загружено с помощью fetch API","color":"cian","__v":0},{"_id":"0002","title":"Второе сообщение","text":"Тоже не пропадет, но Вы можете добавить сообщение ниже","color":"violet","__v":0}]}

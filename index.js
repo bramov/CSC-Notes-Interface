@@ -55,11 +55,12 @@ function postNote () {
     if (!color) {
         color = '#FFFFFF';
     }
+
     let result = generateBlock(title, message, color, darktheme);
     document.body.appendChild(result);
     document.querySelector('.title-input').value = '';
     document.querySelector('.text-area').value = '';
-    //console.log(result);
+
 }
 
 function generateBlock (title, text, color, theme) {
@@ -156,8 +157,31 @@ function changeTheme () {
 
 }
 
-/*
+const getNotes = (renderNotesWithApi) => {
+    fetch('./data.json')
+        .then(response => response.json())
+        .then(data => renderNotesWithApi(data));
+}
+getNotes(renderNotesWithApi);
 
+function renderNotesWithApi(promise) {
+    promise.data.forEach(el => {
+        let color = '';
+        switch (el.color) {
+            case 'cian': color = '#00D595';
+            break;
+            case 'blue': color = '#0051EE';
+            break;
+            case 'violet': color = '#6B48FF';
+            break;
+            default: color = '#FFFFFF';
+        }
+
+    document.body.appendChild(generateBlock(el.title, el.text, color, darktheme))
+    });
+}
+
+/*
 let noteProperties = {
   title: title,
   message: message,
