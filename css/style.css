@@ -209,7 +209,7 @@ button {
 }
 
 
-@media(max-width: 760px) {
+@media(max-width: 850px) {
     .heading, .container {
         width: 94%;
         box-sizing: border-box;
