@@ -142,7 +142,9 @@ function changeTheme () {
         document.querySelector('.text-area').classList.add('changeColor');
         document.querySelector('.send').src = './icons/dark-save.svg';
         document.querySelector('.cancel').src = './icons/dark-cancel.svg';
-
+        document.querySelector('.search-input').style.backgroundColor = '#252525';
+        document.querySelector('.search-input').style.color = '#FFFFFF';
+        document.querySelector('.search-input').classList.add('changeColor');
         document.querySelectorAll('.message').forEach(el => el.style.background = '#595959');
         document.querySelectorAll('.message-title').forEach(el => el.style.color = '#FFFFFF');
         document.querySelectorAll('.message-text').forEach(el => el.style.color = '#CCCCCC');
@@ -166,7 +168,9 @@ function changeTheme () {
         document.querySelector('.text-area').classList.remove('changeColor');
         document.querySelector('.send').src = './icons/save.svg';
         document.querySelector('.cancel').src = './icons/cancel.svg';
-
+        document.querySelector('.search-input').style.backgroundColor = '#FFFFFF';
+        document.querySelector('.search-input').classList.remove('changeColor');
+        document.querySelector('.search-input').style.color = '#333333';
         document.querySelectorAll('.message').forEach(el => el.style.background = '#FFFFFF');
         document.querySelectorAll('.message-title').forEach(el => el.style.color = '#3A4248');
         document.querySelectorAll('.message-text').forEach(el => el.style.color = '#333333');
@@ -181,7 +185,8 @@ const getNotes = (renderNotesWithApi) => {
     fetch('./data.json')
         .then(response => response.json())
         .then(data => renderNotesWithApi(data));
-}
+};
+
 getNotes(renderNotesWithApi);
 
 function renderNotesWithApi(promise) {
@@ -213,34 +218,19 @@ function showSearchInput () {
 }
 
 function searchNotes(event) {
-    console.log(searchInput.value);
+    let searchClearBtn = document.querySelector('.clear-search');
+    searchClearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        instance.unmark();
+        document.querySelector('.search-area').style.display = 'none';
+    });
+    let keyword = searchInput.value;
     let instance = new Mark (document.querySelectorAll('.message'));
-
     instance.unmark({
         done: function(){
-            instance.mark(searchInput.value);
+            instance.mark(keyword);
         }
     });
-
-    /*
-    document.querySelectorAll('.message').forEach(el => {
-        console.log(el.querySelector('.message-text').innerHTML);
-        let isFoundInTitle = el.querySelector('.message-title').innerHTML.includes(searchInput.value);
-        let innerTitle = el.querySelector('.message-title').innerHTML;
-        let isFoundInText = el.querySelector('.message-text').innerHTML.includes(searchInput.value);
-        let innerText = el.querySelector('.message-text').innerHTML;
-        if (isFoundInTitle) {
-            if (innerTitle.includes('<span')){
-                el.querySelector('.message-title').innerHTML.replace('<span class="search-red">', '');
-                el.querySelector('.message-title').innerHTML.replace('</span>', '');
-            }
-            el.querySelector('.message-title').innerHTML = innerTitle.replace(searchInput.value, `<span class="search-red">${searchInput.value}</span>`);
-        }
-        if (isFoundInText) {
-            el.querySelector('.message-text').innerHTML = innerText.replace(searchInput.value, `<span class="search-red">${searchInput.value}</span>`);
-        }
-    });
-     */
 }
 
 
