@@ -5,6 +5,9 @@ let colorChooser = document.querySelector('.other-colors');
 let sendButton = document.querySelector('.send');
 let clearButton = document.querySelector('.cancel');
 let themeButton = document.querySelector('.theme');
+let searchButton = document.querySelector('.search');
+let menuButton = document.querySelector('.menu');
+let searchInput = document.querySelector('.search-input');
 
 
 let greenColor = document.querySelector('.greenColor');
@@ -15,6 +18,8 @@ greenColor.addEventListener('click', makeItGreen);
 blueColor.addEventListener('click', makeItBlue);
 purpleColor.addEventListener('click', makeItPurple);
 
+menuButton.addEventListener('click', showMenu);
+searchButton.addEventListener('click', showSearchInput);
 themeButton.addEventListener('click', changeTheme);
 colorPicker.addEventListener('click', openColors);
 
@@ -26,6 +31,15 @@ function openColors () {
     }
 }
 
+function showMenu() {
+    let menu = document.querySelector('.menu-active');
+    if (menu.style.display === 'none') {
+        menu.style.display = 'block';
+    } else {
+        menu.style.display = 'none';
+    }
+
+}
 
 
 function makeItPurple(){
@@ -36,6 +50,9 @@ function makeItGreen(){
 }
 function makeItBlue(){
     document.querySelector('.whiteColor').style.background = '#0051EE';
+}
+function makeItWhite(){
+    document.querySelector('.whiteColor').style.background = '#FFFFFF';
 }
 
 
@@ -60,6 +77,7 @@ function postNote () {
     document.body.appendChild(result);
     document.querySelector('.title-input').value = '';
     document.querySelector('.text-area').value = '';
+    makeItWhite();
 
 }
 
@@ -101,6 +119,7 @@ function generateBlock (title, text, color, theme) {
 function clearNote () {
     document.querySelector('.title-input').value = '';
     document.querySelector('.text-area').value = '';
+    makeItWhite();
 }
 
 
@@ -127,6 +146,7 @@ function changeTheme () {
         document.querySelectorAll('.message').forEach(el => el.style.background = '#595959');
         document.querySelectorAll('.message-title').forEach(el => el.style.color = '#FFFFFF');
         document.querySelectorAll('.message-text').forEach(el => el.style.color = '#CCCCCC');
+
         darktheme = true;
     } else {
         document.body.style.backgroundColor = '#FFFFFF';
@@ -181,6 +201,58 @@ function renderNotesWithApi(promise) {
     });
 }
 
+function showSearchInput () {
+
+    if (document.querySelector('.search-area').style.display === 'inline') {
+        document.querySelector('.search-area').style.display = 'none';
+    } else {
+        document.querySelector('.search-area').style.display = 'inline';
+        searchInput.focus();
+        searchInput.addEventListener('input', searchNotes);
+    }
+}
+
+function searchNotes(event) {
+    console.log(searchInput.value);
+    let instance = new Mark (document.querySelectorAll('.message'));
+
+    instance.unmark({
+        done: function(){
+            instance.mark(searchInput.value);
+        }
+    });
+
+    /*
+    document.querySelectorAll('.message').forEach(el => {
+        console.log(el.querySelector('.message-text').innerHTML);
+        let isFoundInTitle = el.querySelector('.message-title').innerHTML.includes(searchInput.value);
+        let innerTitle = el.querySelector('.message-title').innerHTML;
+        let isFoundInText = el.querySelector('.message-text').innerHTML.includes(searchInput.value);
+        let innerText = el.querySelector('.message-text').innerHTML;
+        if (isFoundInTitle) {
+            if (innerTitle.includes('<span')){
+                el.querySelector('.message-title').innerHTML.replace('<span class="search-red">', '');
+                el.querySelector('.message-title').innerHTML.replace('</span>', '');
+            }
+            el.querySelector('.message-title').innerHTML = innerTitle.replace(searchInput.value, `<span class="search-red">${searchInput.value}</span>`);
+        }
+        if (isFoundInText) {
+            el.querySelector('.message-text').innerHTML = innerText.replace(searchInput.value, `<span class="search-red">${searchInput.value}</span>`);
+        }
+    });
+     */
+}
+
+
+/*
+class toDoList {
+    constructor(){
+
+    }
+    addItem():
+}
+
+*/
 /*
 let noteProperties = {
   title: title,

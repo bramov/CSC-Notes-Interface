@@ -51,6 +51,7 @@
 }
 
 .navigation_buttons {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: normal;
@@ -59,9 +60,65 @@
 .navigation_buttons > button {
     margin-left: 19px;
 }
+.search-area {
+    display: none;
+}
+.search-input {
+    border: 0;
+    font-size: 17px;
+    line-height: 24px;
+    letter-spacing: -0.03em;
+    margin-left: 12px;
+    color: #333333;
+}
+.search-input::placeholder {
+    color: rgba(55, 65, 72, 0.5);
+}
 
+.menu-active {
+    display: none;
+    padding-top: 24px;
+    padding-left: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 12px rgba(13, 63, 103, 0.14);
+    border-radius: 6px;
+    position: absolute;
+    right: 5px;
+    width: 338px;
+    height: 210px;
+    top: 63px;
+    z-index: 1;
+    font-family: 'SF UI Display Light';
+    font-style: normal;
+    font-weight: normal;
+}
+.menu-active a {
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 24px;
+    align-items: center;
+    letter-spacing: -0.01em;
+    color: #0D3F67;
+}
 
+.photo-description {
+    display: inline-block;
+    margin-top: 30px;
+}
+.photo-description > p {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.03em;
+}
 
+.photo-description > img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-red {
+    color: red;
+}
 
 .text-field {
     position: relative;
@@ -86,9 +143,11 @@
     color: #3A4248;
     align-items: center;
     border: 0px;
-    width: calc(100% - 35px);
+    width: calc(100% - 32px);
 }
-
+.title-input::placeholder {
+    opacity: 0.65;
+}
 /*
 below i am trying to stylish the placeholder attribute inside title-input
 */
@@ -111,7 +170,7 @@ below i am trying to stylish the placeholder attribute inside title-input
     border: 0;
     height: 76px;
     resize: none;
-    width: calc(100% - 30px);
+    width: calc(100% - 32px);
 }
 .settings-tools {
     align-items: center;
@@ -122,7 +181,7 @@ below i am trying to stylish the placeholder attribute inside title-input
     width: 96%;
     margin: 0 15px 15px 15px;
     padding-bottom: 3px;
-    width: calc(100% - 30px);
+    width: calc(100% - 32px);
 }
 
 
@@ -133,6 +192,9 @@ below i am trying to stylish the placeholder attribute inside title-input
 }
 .other-colors {
     display: none;
+}
+.other-colors > div {
+    margin-left: 5px;
 }
 .circle {
     background: #FFFFFF;
@@ -203,6 +265,10 @@ button {
     text-align: left;
 
 }
+mark {
+    color: red;
+    background-color: transparent;
+}
 
 .changeColor::placeholder {
     color: white;
@@ -220,5 +286,11 @@ button {
     .heading, .container {
         width: 94%;
         box-sizing: border-box;
+    }
+    .navigation_buttons {
+        position: static;
+    }
+    .menu-active {
+        width: calc(100% - 37px);
     }
 }
