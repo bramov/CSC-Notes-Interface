@@ -2,13 +2,13 @@
     font-family: 'SF UI Display Bold';
     font-style: normal;
     font-weight: normal;
-    src: local('SF UI Display Bold'), url('../sf-ui-display-bold-58646a511e3d9.woff') format('woff');
+    src: local('SF UI Display Bold'), url('../fonts/sf-ui-display-bold.woff') format('woff');
 }
 @font-face {
     font-family: 'SF UI Display Light';
     font-style: normal;
     font-weight: normal;
-    src: local('SF UI Display Light'), url('../sf-ui-display-light-58646b33e0551.woff') format('woff');
+    src: local('SF UI Display Light'), url('../fonts/sf-ui-display-light.woff') format('woff');
 }
 
 * {
@@ -116,8 +116,8 @@
     margin-right: 10px;
 }
 
-.search-red {
-    color: red;
+.class-that-will-hide {
+    /* default by desktop */
 }
 
 .text-field {
@@ -292,5 +292,8 @@ mark {
     }
     .menu-active {
         width: calc(100% - 37px);
+    }
+    .class-that-will-hide {
+        display: none;
     }
 }

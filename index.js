@@ -1,4 +1,5 @@
 let darktheme = false;
+let logo = document.querySelector('.logo');
 
 let colorPicker = document.querySelector('.color-pick');
 let colorChooser = document.querySelector('.other-colors');
@@ -210,8 +211,12 @@ function showSearchInput () {
 
     if (document.querySelector('.search-area').style.display === 'inline') {
         document.querySelector('.search-area').style.display = 'none';
+        themeButton.classList.remove('class-that-will-hide');
+        logo.classList.remove('class-that-will-hide');
     } else {
         document.querySelector('.search-area').style.display = 'inline';
+        themeButton.classList.add('class-that-will-hide');
+        logo.classList.add('class-that-will-hide');
         searchInput.focus();
         searchInput.addEventListener('input', searchNotes);
     }
@@ -232,8 +237,27 @@ function searchNotes(event) {
         }
     });
 }
-
-
+/*
+let view = {
+    darktheme: false,
+    menu: {
+          toggleTheme: function() {},
+          toggleSearch: function() {},
+          toggleMenu: function() {}
+    },
+    addNote: {
+          selectColor: function() {},
+          clearFields: function() {},
+          sendNote: function() {}
+    },
+    editNote: {
+          deleteNote: function() {},
+          clearNote: function() {},
+          changeColor: function() {},
+          changeText: function() {}
+    }
+};
+*/
 /*
 class toDoList {
     constructor(){
